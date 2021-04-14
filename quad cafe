@@ -1,0 +1,121 @@
+/**
+ * Corey Harold
+ * 2/23/2021
+ * CMSY-166
+ * Quad Cafe
+ * The Quad is selling sandwiches, salads and platters
+ *  as their specials for the month. 
+ *  If a customer orders 3 or more items of the same type,
+ *   there is a special price.
+ */
+package java_1;
+import java.util.*;
+public class QuadCafe {
+	public static void main(String[] args) {
+	Scanner input = new Scanner(System.in);
+	int selection;
+	int count;
+	double cost;
+	int runFactor = 1;
+//There should be NO hard-coded values.  The code should use constant final variables.
+	final int selectSandwich = 1;
+	final int selectSalad = 2;
+	final int selectPlatter = 3;
+	final int selectQuit = 4;
+	//There should be NO hard-coded values.  The code should use constant final variables.
+	final double sandwichPrice = 3.5;
+	final double discountSandwich = 2.75;
+	final double saladPrice = 4.5;
+	final double discountSalad = 3.75;
+	final double platterPrice = 6.5;
+	final double discountPlatter = 5.75;
+	
+	final int discountQuantity = 3;
+	
+	//Create a menu of the items that are being sold
+	System.out.println("welcome to the Quad Cafe\n"
+			+ "what would you like to order?");
+	
+	
+	do {
+		//Create a menu of the items that are being sold
+	System.out.println(" What doy you want to order?"
+			+ "\n 1. Sandwich"
+			+ "\n 2. Salad"
+			+ "\n 3. Platter"
+			+ "\n 4. quit \n"
+			+ "please enter your selection...\n");
+	selection = input.nextInt();
+	//Allow the user to select an option from the menu. If the user selects
+	//an incorrect option, the program should display an error message and 
+	//allow the user to reenter the option.
+while (selection != 1 && selection != 2 && selection != 3 && selection != 4) {
+		System.out.println("Invalid entry. Try again!: ");
+		System.out.println(" What doy you want to order?"
+				+ "\n 1. Sandwich"
+				+ "\n 2. Salad"
+				+ "\n 3. Platter"
+				+ "\n 4. quit \n"
+				+ "please enter your selection...\n");
+		selection = input.nextInt();
+	}	
+	
+//If the user selects that they want 1 or 2 of the item,
+	//the cost should be calculated using the full price.
+	//If the user selects that they want 3 or more of the item,
+	//the cost should be calculated using the discount price.
+if (selection == selectSandwich) {
+		System.out.println("Enter the number of sandwiches: ");
+		count = input.nextInt();//
+		while (count < 0) {
+			System.out.println("You can't buy negative sandwiches! Try again!: ");
+			System.out.println("How many sandwiches?");
+			count = input.nextInt();
+			}		
+		cost = ((count < discountQuantity) ? sandwichPrice : discountSandwich);
+	System.out.printf("the cost per sandwich is $%.2f%n", cost);
+	System.out.printf("the total cost per sandwich is $%.2f%n", (cost * count));
+	}
+	//If the user selects that they want 1 or 2 of the item,
+	//the cost should be calculated using the full price.
+	//If the user selects that they want 3 or more of the item,
+	//the cost should be calculated using the discount price.
+	if (selection == selectSalad) {
+		System.out.println("Enter the number of salads: ");
+		count = input.nextInt();//
+		while (count < 0) {
+			System.out.println("You can't buy negative salads! Try again!: ");
+			System.out.println("How many salads?");
+			count = input.nextInt();
+		}
+		cost = ((count < discountQuantity) ? saladPrice : discountSalad);
+		System.out.printf("the cost per salad is $%.2f%n", cost);
+		System.out.printf("the total cost per salad is $%.2f%n", (cost * count));
+	}
+	//If the user selects that they want 1 or 2 of the item,
+	//the cost should be calculated using the full price.
+	//If the user selects that they want 3 or more of the item,
+	//the cost should be calculated using the discount price.
+	if (selection == selectPlatter) {
+		System.out.println("Enter the number of platters: ");
+		count = input.nextInt();//
+		while (count < 0) {
+		System.out.println("You can't buy negative platters! Try again!: ");
+			System.out.println("How many platters?");
+			count = input.nextInt();
+		}
+	cost = ((count < discountQuantity) ? platterPrice : discountPlatter);
+	System.out.printf("the cost per platter is $%.2f%n", cost);
+	System.out.printf("the total cost per platter is $%.2f%n", (cost * count));
+	}
+	//The program continues until the user selects to Quit from the main menu.
+	//That selection to quit should be the only way that the program ends.
+	if (selection == selectQuit) {
+		System.out.println("You have decided to quit.");
+		runFactor = 0;
+	}
+	} while (runFactor == 1);
+	input.close();
+	} 
+}
+	
